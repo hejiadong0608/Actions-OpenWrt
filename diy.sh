@@ -8,6 +8,7 @@
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' openwrt/package/base-files/files/bin/config_generate
 
+mkdir packages
 git clone https://github.com/Lienol/openwrt-package.git packages/lienol
 rm -rf packages/lienol/lienol/shadowsocks-libev-new
 rm -rf packages/lienol/lienol/shadowsocksr-libev
