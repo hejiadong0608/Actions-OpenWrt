@@ -9,6 +9,7 @@
 #sed -i 's/192.168.1.1/192.168.50.5/g' openwrt/package/base-files/files/bin/config_generate
 
 git clone https://github.com/Lienol/openwrt-package
+mkdir packages
 mv openwrt-package/lienol/* packages
 rm -rf packages/shadowsocks-libev-new
 rm -rf packages/shadowsocksr-libev
