@@ -10,3 +10,5 @@
 
 sed -i 's/bootstrap/material/g' openwrt/package/lean/default-settings/files/zzz-default-settings
 sed -i 's/ built by Lean & KFERM//g' openwrt/package/lean/default-settings/files/zzz-default-settings
+mkdir -p openwrt/files/etc/config
+echo  0xDEADBEEF > openwrt/files/etc/config/google_fu_mode
