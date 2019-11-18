@@ -46,8 +46,6 @@ jobs:
 
     - name: Load Custom Configuration
       run: |
-        ln -sf packages openwrt/package/diy-packages
-        ln -sf files openwrt/files
         chmod +x diy.sh
         ./diy.sh
         [ -e ".config" ] && cp .config openwrt
