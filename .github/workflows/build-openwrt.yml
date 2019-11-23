@@ -41,11 +41,8 @@ jobs:
         rm -rf openwrt/package/openwrt-packages/shadowsocksr-libev
         rm -rf openwrt/package/openwrt-packages/v2ray
         cd openwrt
-<<<<<<< HEAD
         git config --global user.name "Your Name"
         git config --global user.email "you@example.com"
-=======
->>>>>>> 5a83db3dde3af965c2935c3869873c7fcd1163b4
         ./scripts/pull-leans
         ./scripts/feeds update -a
         ./scripts/feeds install -a
