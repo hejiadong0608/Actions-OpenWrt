@@ -41,6 +41,7 @@ jobs:
         rm -rf openwrt/package/openwrt-packages/shadowsocksr-libev
         rm -rf openwrt/package/openwrt-packages/v2ray
         cd openwrt
+        ./scripts/pull-leans
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
