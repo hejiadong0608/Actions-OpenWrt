@@ -50,9 +50,9 @@ jobs:
     - name: Load Custom Configuration
       run: |
         chmod +x diy.sh
-        ./diy.sh
         [ -e ".config" ] && cp .config openwrt
         cd openwrt
+        ../diy.sh
         make defconfig
 
     - name: Download package
