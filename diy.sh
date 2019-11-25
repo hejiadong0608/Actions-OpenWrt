@@ -12,4 +12,4 @@ sed -i 's/bootstrap/material/g' package/lean/default-settings/files/zzz-default-
 sed -i 's/ built by Lean & KFERM//g' package/lean/default-settings/files/zzz-default-settings
 mkdir -p files/etc/config
 echo  0xDEADBEEF > files/etc/config/google_fu_mode
-rm -rf package/lean/kcptun
+sed -i 's/20190515/20191112/g' package/lean/kcptun/Makefile
