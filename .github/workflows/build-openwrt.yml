@@ -62,7 +62,6 @@ jobs:
         mv openwrt-package/lienol/* openwrt/package/openwrt-packages
         rm -rf openwrt/package/openwrt-packages/shadowsocks-libev-new
         rm -rf openwrt/package/openwrt-packages/shadowsocksr-libev
-        rm -rf openwrt/package/openwrt-packages/v2ray
         cd openwrt
         git config --global user.name "Your Name"
         git config --global user.email "you@example.com"
