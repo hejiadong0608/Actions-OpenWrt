@@ -66,13 +66,18 @@ jobs:
         git config --global user.name "Your Name"
         git config --global user.email "you@example.com"
         ./scripts/pull-leans
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
 
-    - name: Load Custom Configuration
+    - name: Update feeds
+      run: cd openwrt && ./scripts/feeds update -a
+
+    - name: Install feeds
+      run: cd openwrt && ./scripts/feeds install -a
+
+    - name: Load custom configuration
       run: |
+        [ -e files ] && mv files openwrt/files
+        [ -e .config ] && mv .config openwrt
         chmod +x diy.sh
-        [ -e ".config" ] && cp .config openwrt
         cd openwrt
         ../diy.sh
         make defconfig
