@@ -1,8 +1,8 @@
 #=================================================
-#   Description: Build OpenWrt using GitHub Actions
-#   Lisence: MIT
-#   Author: P3TERX
-#   Blog: https://p3terx.com
+# Description: Build OpenWrt using GitHub Actions
+# Lisence: MIT
+# Author: P3TERX
+# Blog: https://p3terx.com
 #=================================================
 
 name: Build OpenWrt
@@ -55,17 +55,10 @@ jobs:
         sudo -E apt-get clean
 
     - name: Clone source code
-      run: |
-        git clone https://github.com/KFERMercer/openwrt
-        git clone https://github.com/Lienol/openwrt-package
-        mkdir openwrt/package/openwrt-packages
-        mv openwrt-package/lienol/* openwrt/package/openwrt-packages
-        rm -rf openwrt/package/openwrt-packages/shadowsocks-libev-new
-        rm -rf openwrt/package/openwrt-packages/shadowsocksr-libev
-        cd openwrt
-        git config --global user.name "Your Name"
-        git config --global user.email "you@example.com"
-        ./scripts/pull-leans
+      env: 
+        REPO_URL: https://github.com/KFERMercer/openwrt
+        REPO_BRANCH: master
+      run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
