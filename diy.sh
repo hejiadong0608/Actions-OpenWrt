@@ -21,4 +21,3 @@ sed -i 's/ built by Lean & KFERM//g' package/lean/default-settings/files/zzz-def
 mkdir -p files/etc/config
 echo  0xDEADBEEF > files/etc/config/google_fu_mode
 sed -i 's/20190515/20191112/g' package/lean/kcptun/Makefile
-rm -rf package/lean/v2ray
