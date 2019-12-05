@@ -5,7 +5,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build OpenWrt for x86_64
+name: Build OpenWrt for HC5962
 
 on: 
   release:
@@ -14,7 +14,7 @@ on:
     branches: 
       - master
     paths:
-      - 'x86_64.config'
+      - 'hc5962.config'
 #  schedule:
 #    - cron: 0 8 * * 5
 #  watch:
@@ -55,7 +55,7 @@ jobs:
 
     - name: Load custom configuration
       env:
-        CONFIG_FILE: 'x86_64.config'
+        CONFIG_FILE: 'hc5962.config'
         DIY_SH: 'diy.sh'
       run: |
         [ -e files ] && mv files openwrt/files
