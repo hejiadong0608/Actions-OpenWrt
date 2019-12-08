@@ -47,6 +47,14 @@ jobs:
         REPO_BRANCH: master
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
+    - name: Set git identity
+      run : |
+        git config --global user.email "hejiadong@vip.qq.com"
+        git config --global user.name "hejiadong"
+
+    - name: Load upstream commits
+      run: git pull https://github.com/coolsnowwolf/lede.git --no-edit
+
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
