@@ -13,8 +13,8 @@ on:
   push:
     branches: 
       - master
-    paths:
-      - 'x86_64.config'
+#    paths:
+#      - 'x86_64.config'
 #  schedule:
 #    - cron: 0 8 * * 5
 #  watch:
@@ -53,7 +53,7 @@ jobs:
         git config --global user.name "hejiadong"
 
     - name: Load upstream commits
-      run: git pull https://github.com/coolsnowwolf/lede.git --no-edit
+      run: cd openwrt && git pull https://github.com/coolsnowwolf/lede.git --no-edit
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
