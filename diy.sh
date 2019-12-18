@@ -10,6 +10,8 @@
 
 git clone https://github.com/Lienol/openwrt-package
 mv openwrt-package/lienol package/openwrt-packages
+mv openwrt-package/package/* package/openwrt-packages
+mv openwrt-package/others/* package/openwrt-packages
 rm -rf package/openwrt-packages/v2ray
 rm -rf package/openwrt-packages/openssl1.1
 rm -rf package/openwrt-packages/trojan
