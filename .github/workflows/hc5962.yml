@@ -9,11 +9,11 @@
 name: Build OpenWrt for HC5962
 
 on: 
-  release:
-    types: [published]
-  push:
-    branches: 
-      - master
+#  release:
+#    types: [published]
+#  push:
+#    branches: 
+#      - master
 #    paths:
 #      - 'HC5962.config'
 #  schedule:
