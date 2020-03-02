@@ -24,7 +24,7 @@ rm -rf package/openwrt-packages/verysync
 rm -rf package/lean/luci-app-kodexplorer
 rm -rf package/openwrt-packages/ipt2socks
 rm -rf package/lean/luci-app-pppoe-relay
-rm -rf package/openwrt-packages/luci-app-v2ray-server
+rm -rf package/lean/luci-app-v2ray-server
 
 sed -i 's/bootstrap/material/g' package/lean/default-settings/files/zzz-default-settings
 sed -i 's/ built by Lean & KFERM//g' package/lean/default-settings/files/zzz-default-settings
