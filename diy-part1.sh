@@ -1,12 +1,18 @@
 #!/bin/bash
-#=================================================
-# Description: DIY script
+#=============================================================
+# https://github.com/P3TERX/Actions-OpenWrt
+# File name: diy-part1.sh
+# Description: OpenWrt DIY script part 1 (Before Update feeds)
 # Lisence: MIT
 # Author: P3TERX
 # Blog: https://p3terx.com
-#=================================================
-# Modify default IP
-#sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
+#=============================================================
+
+# Uncomment a feed source
+#sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+
+# Add a feed source
+#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
 mkdir package/openwrt-packages
 tar -xzf ../luci-app-passwall.tgz
@@ -28,9 +34,3 @@ rm -rf package/lean/ipt2socks
 rm -rf package/lean/luci-app-pppoe-relay
 rm -rf package/lean/luci-app-v2ray-server
 rm -rf package/openwrt-packages/luci-app-verysync
-
-sed -i 's/bootstrap/material/g' package/lean/default-settings/files/zzz-default-settings
-sed -i 's/ built by Lean & KFERM//g' package/lean/default-settings/files/zzz-default-settings
-mkdir -p files/etc/config
-echo  0xDEADBEEF > files/etc/config/google_fu_mode
-# sed -i 's/20190515/20191127/g' package/lean/kcptun/Makefile
