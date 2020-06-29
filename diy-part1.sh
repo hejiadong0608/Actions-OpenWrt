@@ -14,6 +14,9 @@
 # Add a feed source
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
+git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+git config --global user.name "github-actions[bot]"
+git pull https://github.com/coolsnowwolf/lede.git --log --no-commit
 mkdir package/openwrt-packages
 tar -xzf ../luci-app-passwall.tgz
 mv luci-app-passwall package/openwrt-packages
