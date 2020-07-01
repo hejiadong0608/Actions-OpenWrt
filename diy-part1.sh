@@ -15,7 +15,7 @@
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
 mkdir package/openwrt-packages
-tar -xzf luci-app-passwall.tgz
+tar -xzf $GITHUB_WORKSPACE/luci-app-passwall.tgz
 mv luci-app-passwall package/openwrt-packages
 git clone https://github.com/Lienol/openwrt-package
 mv openwrt-package/lienol/* package/openwrt-packages
