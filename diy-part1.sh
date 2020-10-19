@@ -21,6 +21,7 @@ sed -i 's/#src-git helloworld/src-git helloworld/g' feeds.conf.default
 sed -i '$a src-git lienol https://github.com/xiaorouji/openwrt-package' feeds.conf.default
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
-git clone https://github.com/lisaac/luci-app-dockerman package/luci-app-dockerman
-git clone https://github.com/lisaac/luci-lib-docker package/lean/luci-lib-docker
+git clone https://github.com/tty228/luci-app-serverchan ./package/luci-app-serverchan
+git clone https://github.com/lisaac/luci-app-dockerman ./package/luci-app-dockerman
+git clone https://github.com/lisaac/luci-lib-docker ./package/lean/luci-lib-docker
+git clone https://github.com/KFERMercer/luci-app-tcpdump.git ./package/luci-app-tcpdump
