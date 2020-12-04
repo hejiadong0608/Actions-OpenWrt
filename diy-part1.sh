@@ -18,7 +18,8 @@ rm -rf package/lean/luci-lib-docker
 # Add a feed source
 sed -i 's/#src-git helloworld/src-git helloworld/g' feeds.conf.default
 #sed -i '$a src-git helloworld https://github.com/fw876/helloworld' feeds.conf.default
-sed -i '$a src-git lienol https://github.com/xiaorouji/openwrt-package' feeds.conf.default
+sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package.git;main' feeds.conf.default
+sed -i '$a src-git diy1 https://github.com/xiaorouji/openwrt-passwall.git;main' feeds.conf.default
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 git clone https://github.com/tty228/luci-app-serverchan ./package/luci-app-serverchan
