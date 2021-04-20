@@ -20,4 +20,3 @@ sed -i '$a src-git helloworld https://github.com/fw876/helloworld' feeds.conf.de
 sed -i '$a src-git diy1 https://github.com/xiaorouji/openwrt-passwall.git;main' feeds.conf.default
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-git clone https://github.com/KFERMercer/luci-app-tcpdump.git ./package/luci-app-tcpdump
