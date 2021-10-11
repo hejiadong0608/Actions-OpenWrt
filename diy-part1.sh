@@ -27,3 +27,5 @@ sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 git clone https://github.com/lisaac/luci-app-dockerman ./package/luci-app-dockerman
 git clone https://github.com/lisaac/luci-lib-docker ./package/lean/luci-lib-docker
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git ./package/luci-app-tcpdump
+
+sed -i 's/git.openwrt.org\/feed/github.com\/openwrt/g' feeds.conf.default
