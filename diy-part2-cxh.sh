@@ -17,7 +17,7 @@ sed -i 's/bootstrap/material/g' package/lean/default-settings/files/zzz-default-
 mkdir -p files/etc/config
 echo  0xDEADBEEF > files/etc/config/google_fu_mode
 
-cat files/etc/config/network <<EOF
+cat > files/etc/config/network <<EOF
 
 config interface 'loopback'
 	option ifname 'lo'
