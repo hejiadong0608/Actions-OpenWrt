@@ -14,5 +14,7 @@
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
 sed -i 's/bootstrap/material/g' package/lean/default-settings/files/zzz-default-settings
-mkdir -p files/etc/config
-echo  0xDEADBEEF > files/etc/config/google_fu_mode
+sed -i 's/\/bin\/ash/\/bin\/bash/' package/base-files/files/etc/passwd    # 替换终端为bash
+
+#mkdir -p files/etc/config
+#echo  0xDEADBEEF > files/etc/config/google_fu_mode
