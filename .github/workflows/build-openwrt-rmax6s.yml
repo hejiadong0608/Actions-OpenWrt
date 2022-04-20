@@ -22,6 +22,14 @@ on:
         description: 'Cache wrt build'
         required: false
         default: 'true'
+      need_patch: 
+        description: 'Need Patch?'
+        required: false
+        default: 'true'
+      patch_filename:
+        description: 'Patch Filename'
+        required: false
+        default: 'ax6s.patch'
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -64,6 +72,13 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+
+    - name: Apply patch
+      working-directory: /workdir
+      if: (github.event.inputs.need_patch == 'true' && github.event.inputs.need_patch  != 'false') 
+      run: |
+        cd openwrt
+        git apply $GITHUB_WORKSPACE/${{ github.event.inputs.patch_filename }}
 
     - name: cache
       if: github.event.inputs.cache == 'true' && github.event.inputs.cache != 'false'
