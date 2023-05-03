@@ -18,10 +18,6 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
-      cache:
-        description: 'Cache wrt build'
-        required: false
-        default: 'true'
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -51,7 +47,13 @@ jobs:
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
-        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
+        sudo -E apt-get -qq install ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
+   bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
+   git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \
+   libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \
+   mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools \
+   libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip \
+   vim wget xmlto xxd zlib1g-dev
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
@@ -65,13 +67,6 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-    - name: cache
-      if: github.event.inputs.cache == 'true' && github.event.inputs.cache != 'false'
-      uses: klever1988/cachewrtbuild@main
-      with:
-        ccache: 'true'
-        prefix: ${{ github.workspace }}/openwrt
-
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
@@ -84,19 +79,6 @@ jobs:
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a -f
-
-    - name: Openwrt AutoUpdate
-      run: |
-        TEMP=$(date +"OpenWrt_%Y%m%d_%H%M%S_")$(git rev-parse --short HEAD)
-        echo "RELEASE_TAG=$TEMP" >> $GITHUB_ENV
-        #required>>add "DISTRIB_GITHUB" to "zzz-default-settings"
-        sed -i "/DISTRIB_DESCRIPTION=/a\sed -i '/DISTRIB_GITHUB/d' /etc/openwrt_release" openwrt/package/lean/default-settings/files/zzz-default-settings
-        sed -i "/DISTRIB_GITHUB/a\echo \"DISTRIB_GITHUB=\'https://github.com/${{github.repository}}\'\" >> /etc/openwrt_release" openwrt/package/lean/default-settings/files/zzz-default-settings
-        #required>>add "DISTRIB_VERSIONS" to "zzz-default-settings"
-        sed -i "/DISTRIB_DESCRIPTION=/a\sed -i '/DISTRIB_VERSIONS/d' /etc/openwrt_release" openwrt/package/lean/default-settings/files/zzz-default-settings
-        sed -i "/DISTRIB_VERSIONS/a\echo \"DISTRIB_VERSIONS=\'${TEMP:8}\'\" >> /etc/openwrt_release" openwrt/package/lean/default-settings/files/zzz-default-settings
-        #nonessential>>add "github.actor" to "DISTRIB_DESCRIPTION" in "zzz-default-settings"
-        #sed -i "s/OpenWrt /${{github.actor}} compiled (${TEMP:8}) \/ OpenWrt /g" openwrt/package/lean/default-settings/files/zzz-default-settings
 
     - name: Load custom configuration
       run: |
