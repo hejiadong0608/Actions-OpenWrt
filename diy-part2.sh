@@ -16,5 +16,6 @@
 sed -i 's/bootstrap/material/g' package/lean/default-settings/files/zzz-default-settings
 sed -i 's/\/bin\/ash/\/bin\/bash/' package/base-files/files/etc/passwd    # 替换终端为bash
 
+rm -rf feeds/small8/miniupnpd*
 # mkdir -p files/etc/config
 # echo  0xDEADBEEF > files/etc/config/google_fu_mode
