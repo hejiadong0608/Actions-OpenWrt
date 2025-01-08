@@ -16,7 +16,7 @@
 sed -i 's/bootstrap/material/g' package/lean/default-settings/files/zzz-default-settings
 sed -i 's/\/bin\/ash/\/bin\/bash/' package/base-files/files/etc/passwd    # 替换终端为bash
 
-rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb}
+rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb,tailscale}
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/packages/net/tailscale
 git clone https://github.com/openwrt/packages
