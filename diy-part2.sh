@@ -18,6 +18,11 @@ sed -i 's/\/bin\/ash/\/bin\/bash/' package/base-files/files/etc/passwd    # æ›¿æ
 
 rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb}
 rm -rf feeds/luci/applications/luci-app-passwall
+rm -rf feeds/packages/net/tailscale
+git clone https://github.com/openwrt/packages
+mv packages/net/tailscale feeds/packages/net
+sed -i "s/'nftables'/'iptables'/" feeds/packages/net/tailscale/files/tailscale.conf
+rm -rf packages
 ./scripts/feeds update -ai
 # mkdir -p files/etc/config
 # echo  0xDEADBEEF > files/etc/config/google_fu_mode
