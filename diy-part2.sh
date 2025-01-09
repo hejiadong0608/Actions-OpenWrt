@@ -17,11 +17,11 @@ sed -i 's/bootstrap/material/g' package/lean/default-settings/files/zzz-default-
 sed -i 's/\/bin\/ash/\/bin\/bash/' package/base-files/files/etc/passwd    # 替换终端为bash
 
 rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb,tailscale}
-rm -rf feeds/packages/net/{tailscale,brook,chinadns-ng,dns2socks,dns2tcp,geoview,gn,hysteria,ipt2socks,microsocks,naiveproxy,pdnsd-alt,shadowsocks-libev,shadowsocksr-libev,shadowsocks-rust,simple-obfs,sing-box,ssocks,tcping,trojan,trojan-go,trojan-plus,tuic-client,v2ray-core,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
-rm -rf feeds/luci/applications/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
 git clone https://github.com/openwrt/packages
-mv packages/net/tailscale feeds/packages/net
-sed -i "s/'nftables'/'iptables'/" feeds/packages/net/tailscale/files/tailscale.conf
+mv packages/net/tailscale package/lean
+sed -i "s/'nftables'/'iptables'/" package/lean/tailscale/files/tailscale.conf
 rm -rf packages
 ./scripts/feeds update -ai
 # mkdir -p files/etc/config
